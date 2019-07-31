@@ -1,18 +1,7 @@
 <?php
 
-Route::get('/', function(){
-	return view('home');
-})->name('home');
+Route::get('/','PagesController@home')->name('home');
 
-/*Route::get('contactame',['as' => 'contactos',function(){
-	return "seccion de contactos";
-}]);*/
+Route::get('contactame','PagesController@contactos')->name('contactos');
 
-Route::get('contactame',function(){
-	return view('contactos');
-})->name('contactos');
-
-Route::get('saludos/{nombre?}', function($nombre = "invitado"){
-	// return view('saludo',['nombre'=>$nombre]);
-	return view('saludo')->with(['nombre'=>$nombre]);
-})->where('nombre',"[A-Za-z]+")->name('saludos');
+Route::get('saludos/{nombre?}','PagesController@saludo')->where('nombre',"[A-Za-z]+")->name('saludos');
