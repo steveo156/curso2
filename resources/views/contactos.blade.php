@@ -2,6 +2,9 @@
 @section('contenido')
 <h1>Contactos</h1>
 <h2>Escribeme</h2>
+@if(session('info'))
+<h3>{{session('info')}}<h3>
+@else
 
 <form method="POST" action="contacto">
 	{{ csrf_field() }}
@@ -17,10 +20,10 @@
 	</label></p>
 	<p><label for="mensaje">
 		Mensaje
-		<textarea name="mensaje"> {{old('mensaje')}} </textarea>
-		{!! $errors->first('mensaje','<small class="error">:message</small>') !!}
+		<textarea name="mensaje">{{old('mensaje')}}</textarea>{!! $errors->first('mensaje','<small class="error">:message</small>') !!}
 	</label></p>
 	<input type="submit" name="Enviar">
 </form>
-
+@endif
+<hr>
 @endsection

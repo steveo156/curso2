@@ -23,7 +23,10 @@ class PagesController extends Controller
 
  	public function mensajes(CreateMessageRequest $request){
 
- 		return $request->all();
+ 		$data = $request->all();
+ 		return back()->with('info','Mensaje enviado');
+ 		// return redirect()->route('contactos')->with('info','Mensaje enviado');
+
 
  	}
 
