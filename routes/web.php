@@ -9,7 +9,7 @@ Route::get('/', function(){
 }]);*/
 
 Route::get('contactame',function(){
-	return "seccion de contactos";
+	return view('contactos');
 })->name('contactos');
 
 Route::get('saludos/{nombre?}', function($nombre = "invitado"){

@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h1>Contactos</h1>
-</body>
-</html>
+@extends('layout')
+@section('contenido')
+<h1>Contactos</h1>
+@endsection
