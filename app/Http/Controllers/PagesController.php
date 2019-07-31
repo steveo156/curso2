@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateMessageRequest;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -20,8 +21,10 @@ class PagesController extends Controller
  		return view('saludo',compact('nombre'));
  	}
 
- 	public function mensajes(Request $request){
+ 	public function mensajes(CreateMessageRequest $request){
+
  		return $request->all();
+
  	}
 
 }

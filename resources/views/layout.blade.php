@@ -7,6 +7,10 @@
 			color: green;
 			text-decoration: none;
 		}
+		.error{
+			color:red;
+			text-decoration: none;
+		}
 	</style>
 </head>
 <body>
