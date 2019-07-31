@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+
 	public function home(){
 		return view('home');
 	}
@@ -14,13 +15,6 @@ class PagesController extends Controller
  		return view('saludo',compact('nombre'));
  	}
 
- 	public function mensajes(CreateMessageRequest $request){
 
- 		$data = $request->all();
- 		return back()->with('info','Mensaje enviado');
- 		// return redirect()->route('contactos')->with('info','Mensaje enviado');
-
-
- 	}
 
 }

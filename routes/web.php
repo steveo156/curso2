@@ -6,3 +6,7 @@ Route::get('saludos/{nombre?}','PagesController@saludo')->where('nombre',"[A-Za-
 
 Route::resource('mensajes','MessagesController');
 
+
+Auth::routes();
+
+

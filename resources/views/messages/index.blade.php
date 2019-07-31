@@ -8,7 +8,9 @@
 			<th>Nombre</th>
 			<th>Email</th>
 			<th>Mensaje</th>
+			@auth
 			<th>Acciones</th>
+			@endauth
 		</thead>
 		<tbody>
 			@foreach($messages as $message)
@@ -21,6 +23,7 @@
 					</td>
 					<td> {{$message->email}} </td>
 					<td> {{$message->mensaje}} </td>
+					@auth
 					<td>
 						<a href="{{route('mensajes.edit',$message->id)}}">
 							Editar
@@ -32,6 +35,7 @@
 							<button type="submit">Eliminar</button>
 						</form>
 					</td>
+					@endauth
 				</tr>
 			@endforeach
 		</tbody>
