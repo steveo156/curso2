@@ -17,14 +17,16 @@
 
 	<header>
 		<?php
-			function activeMenu($routeName){
-				return request()->routeIs($routeName) ? 'active' : '';
+			function activeMenu($url){
+				return request()->routeIs($url) ? 'active' : '';
 			}
 		?>
 		<nav>
 			<a class="{{ activeMenu('home') }}" href="{{ route('home') }}">Inicio</a>
 			<a class="{{ activeMenu('saludos') }}" href="{{ route('saludos','Steve') }}">Saludos</a>
-			<a class="{{ activeMenu('contactos') }}" href="{{ route('contactos') }}">Contactos</a>
+			<a class="{{ activeMenu('mensajes/create') }}" href="{{ route('messages.create') }}">Contactos</a>
+			<a class="{{ activeMenu('mensajes') }}" href="{{ route('messages.index') }}">Mensajes</a>
+
 		</nav>
 	</header>
 

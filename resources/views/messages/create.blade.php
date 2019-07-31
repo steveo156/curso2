@@ -6,7 +6,7 @@
 <h3>{{session('info')}}<h3>
 @else
 
-<form method="POST" action="contacto">
+<form method="POST" action="{{route('messages.store')}}">
 	{{ csrf_field() }}
 	<p><label for="name">
 		Nombre
