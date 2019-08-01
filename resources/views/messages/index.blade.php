@@ -2,7 +2,7 @@
 @section('contenido')
 	<h1>Todos los mensajes</h1>
 
-	<table width="100%" border="1">
+	<table class="table">
 		<thead>
 			<th>ID</th>
 			<th>Nombre</th>
@@ -25,14 +25,14 @@
 					<td> {{$message->mensaje}} </td>
 					@auth
 					<td>
-						<a href="{{route('mensajes.edit',$message->id)}}">
+						<a class="btn btn-info btn-xs" href="{{route('mensajes.edit',$message->id)}}">
 							Editar
 						</a>
 
 						<form style="display: inline;" action="{{route('mensajes.destroy',$message->id)}}" method="post">
 							{!! csrf_field() !!}
 							{!! method_field('DELETE') !!}
-							<button type="submit">Eliminar</button>
+							<button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
 						</form>
 					</td>
 					@endauth
