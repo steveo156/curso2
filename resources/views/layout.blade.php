@@ -62,6 +62,9 @@
 									<li>
 										<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
 									</li>
+									<li>
+										<a href="/usuarios/{{auth()->id()}}/edit">Mi cuenta</a>
+									</li>
 								</ul>
 							</li>
 						@else
