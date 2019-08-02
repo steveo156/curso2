@@ -42,28 +42,33 @@
 						@auth
 							<li class="{{ activeMenu('mensajes*') }}">
 								<a href="{{ route('mensajes.index') }}">Mensajes</a>
-							</li>
+							@if( auth()->user()->hasRoles(['admin','moderador']))
+								</li>
+								<li class="{{ activeMenu('usuarios*') }}">
+									<a href="{{ route('usuarios.index') }}">Usuarios</a>
+								</li>
+							@endif
 						@endauth
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						@auth
-							<li>
-								<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									{{ auth()->user()->name }} | {{ auth()->user()->role }}
+									<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+									</li>
+								</ul>
 							</li>
 						@else
 							<li>
 								<a href="{{ route('login') }}">{{ __('Login') }} </a>
 							</li>
+
 						@endauth
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li><a href="#">Separated link</a></li>
-							</ul>
-						</li>
+
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div>
@@ -74,11 +79,7 @@
 		</form>
 	</header>
 	<div class="container">
-		@auth
-			BIENVENIDO {{ auth()->user()->name }}
-		@else
-			BIENVENIDO INVITADO
-		@endauth
+
 
 		@yield('contenido')
 
