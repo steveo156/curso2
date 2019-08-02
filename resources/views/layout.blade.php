@@ -42,7 +42,7 @@
 						@auth
 							<li class="{{ activeMenu('mensajes*') }}">
 								<a href="{{ route('mensajes.index') }}">Mensajes</a>
-							@if( auth()->user()->hasRoles(['admin','moderador']))
+							@if( auth()->user()->hasRoles(['admin','mod']))
 								</li>
 								<li class="{{ activeMenu('usuarios*') }}">
 									<a href="{{ route('usuarios.index') }}">Usuarios</a>
@@ -54,7 +54,7 @@
 						@auth
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									{{ auth()->user()->name }} | {{ auth()->user()->role }}
+									{{ auth()->user()->name }} | {{ auth()->user()->role->display_name }}
 									<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li>
