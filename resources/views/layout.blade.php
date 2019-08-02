@@ -1,3 +1,4 @@
+{{-- {{dd(auth()->user()->roles->toArray() )}} --}}
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,8 @@
 						@auth
 							<li class="{{ activeMenu('mensajes*') }}">
 								<a href="{{ route('mensajes.index') }}">Mensajes</a>
-							@if( auth()->user()->hasRoles(['admin','mod']))
+
+							@if( auth()->user()->hasRoles(['admin']))
 								</li>
 								<li class="{{ activeMenu('usuarios*') }}">
 									<a href="{{ route('usuarios.index') }}">Usuarios</a>
@@ -54,7 +56,7 @@
 						@auth
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									{{ auth()->user()->name }} | {{ auth()->user()->role->display_name }}
+									{{ auth()->user()->name }}
 									<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li>
