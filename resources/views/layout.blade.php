@@ -60,10 +60,10 @@
 									<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li>
-										<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+										<a href="/usuarios/{{auth()->id()}}/edit">Mi cuenta</a>
 									</li>
 									<li>
-										<a href="/usuarios/{{auth()->id()}}/edit">Mi cuenta</a>
+										<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
 									</li>
 								</ul>
 							</li>
