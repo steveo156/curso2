@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -65,7 +66,8 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $this->authorize('edit',$user);
-        return view('users.edit',compact('user'));
+        $roles = Role::pluck('display_name','id');
+        return view('users.edit',compact('user','roles'));
     }
 
     public function update(UpdateUserRequest $request, $id)
@@ -73,6 +75,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $this->authorize('edit',$user);
         $user->update($request->all());
+        $user->roles()->sync($request->roles);
         return back()->with('info','Usuario actualizado');
     }
 

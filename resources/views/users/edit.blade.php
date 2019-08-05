@@ -18,6 +18,18 @@
 			<input type="email" name="email" value="{{$user->email}}" class="form-control">
 			{!! $errors->first('email','<small class="error">:message</small>') !!}
 		</label></p>
+		<div class="checkbox">
+			@foreach($roles as $id => $name)
+				<label>
+					<input
+					type="checkbox"
+					name="roles[]"
+					{{$user->roles->pluck('id')->contains($id) ? 'checked' : ''}}
+					value="{{$id}}">
+					{{$name}}
+				</label>
+			@endforeach
+		</div>
 		<input type="submit" name="Enviar" class="btn btn-primary">
 	</form>
 
