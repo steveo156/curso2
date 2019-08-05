@@ -11,4 +11,9 @@ class Message extends Model
 
 	// Esta clase nso protege de asignacion masiva de datos, permitiendo insertar unicamente los datos especificados en el array fillable
 	protected $fillable = ['nombre','email','mensaje'];
+
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
 }
