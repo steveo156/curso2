@@ -8,6 +8,7 @@
 			<th>Nombre</th>
 			<th>Email</th>
 			<th>Mensaje</th>
+			<th>Notas</th>
 			@auth
 			<th>Acciones</th>
 			@endauth
@@ -32,6 +33,9 @@
 						<a href="{{route('mensajes.show',$message->id)}}">
 								{{$message->mensaje}}
 						</a>
+					</td>
+					<td>
+						{{  optional( $message->note )->body }}
 					</td>
 					@auth
 					<td>

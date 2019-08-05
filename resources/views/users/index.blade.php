@@ -10,6 +10,7 @@
 			<th>Usuario</th>
 			<th>Email</th>
 			<th>Role</th>
+			<th>Notas</th>
 			<th>Acciones</th>
 
 		</thead>
@@ -17,11 +18,12 @@
 			@foreach($users as $user)
 				<tr>
 					<td> {{$user->id}} </td>
-					<td> {{$user->name}} </td>
+					<td> <a href="{{ route('usuarios.show',$user->id) }}">{{$user->name}} </a> </td>
 					<td> {{$user->email}} </td>
 					<td>
 						{{$user->roles->pluck('display_name')->implode(' - ')}}
 					</td>
+					<td> {{  optional( $user->note )->body }} </td>
 					<td>
 						<a class="btn btn-info btn-xs"
 							href="{{route('usuarios.edit',$user->id)}}">
