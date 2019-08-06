@@ -38,7 +38,13 @@ class MessagesController extends Controller
 
     public function store(CreateMessageRequest $request)
     {
-        $message = Message::create($request->validated());
+        /*$message = Message::create($request->validated());
+        if(auth()->check())
+        {
+            auth()->user()->messages()->save($message);
+        }*/
+
+        $message = Message::create($request->all());
         if(auth()->check())
         {
             auth()->user()->messages()->save($message);
@@ -46,7 +52,7 @@ class MessagesController extends Controller
 
 
     Mail::send('emails.contact', ['msg' => $message], function($m) use ($message){
-        $m->to('ramon@hotmail.com', 'ramon')->subject('Tu mensaje fue recibido');
+        $m->to($message->email, $message->nombre )->subject('Tu mensaje fue recibido');
     });
 
 
