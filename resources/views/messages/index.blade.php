@@ -9,6 +9,7 @@
 			<th>Email</th>
 			<th>Mensaje</th>
 			<th>Notas</th>
+			<th>Etiquetas</th>
 			@auth
 			<th>Acciones</th>
 			@endauth
@@ -37,6 +38,7 @@
 					<td>
 						{{  optional( $message->note )->body }}
 					</td>
+					<td> {{ $message->tags->pluck('name')->implode(', ') }} </td>
 					@auth
 					<td>
 						<a class="btn btn-info btn-xs" href="{{route('mensajes.edit',$message->id)}}">
