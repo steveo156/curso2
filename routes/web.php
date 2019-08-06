@@ -8,9 +8,9 @@
 ]);*/
 
 
-DB::listen(function($query){
-	echo "<pre> {$query->sql} </pre>";
-});
+// DB::listen(function($query){
+// 	echo "<pre> {$query->sql} </pre>";
+// });
 
 
 Route::get('roles', function(){
