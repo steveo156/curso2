@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageWasReceived;
 use App\Http\Requests\CreateMessageRequest;
 use App\Message;
 use Carbon\Carbon;
 use DB;
-use Mail;
 use Illuminate\Http\Request;
+use Mail;
 
 class MessagesController extends Controller
 {
@@ -50,11 +51,7 @@ class MessagesController extends Controller
             auth()->user()->messages()->save($message);
         }
 
-
-    Mail::send('emails.contact', ['msg' => $message], function($m) use ($message){
-        $m->to($message->email, $message->nombre )->subject('Tu mensaje fue recibido');
-    });
-
+        event(new MessageWasReceived($message));
 
         return redirect()->route('mensajes.create')->with('info','Mensaje enviado');
     }
