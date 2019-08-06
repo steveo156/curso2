@@ -24,7 +24,7 @@
 					<td>
 						{{$user->roles->pluck('display_name')->implode(' - ')}}
 					</td>
-					<td> {{  optional( $user->note )->body }} </td>
+					<td> {{ $user->note ?  (optional( $user->note )->body) : '' }} </td>
 					<td> {{ $user->tags->pluck('name')->implode(', ') }} </td>
 					<td>
 						<a class="btn btn-info btn-xs"

@@ -1,5 +1,5 @@
 {{ csrf_field() }}
-	@unless($message->user_id)
+	@if($showFields)
 		<p><label for="name">
 			Nombre
 			<input type="text" name="nombre" value="{{ $message->nombre or old('nombre')}}" class="form-control">
@@ -10,7 +10,7 @@
 			<input type="email" name="email" value="{{ $message->email or old('email')}}" class="form-control">
 			{!! $errors->first('email','<small class="error">:message</small>') !!}
 		</label></p>
-	@endunless
+	@endif
 	<p><label for="mensaje">
 		Mensaje
 		<textarea name="mensaje" class="form-control">{{ $message->mensaje or old('mensaje')}}</textarea>{!! $errors->first('mensaje','<small class="error">:message</small>') !!}
